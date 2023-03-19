@@ -1,12 +1,12 @@
 import React from "react";
 import GlobalStyle from "./components/GlobalStyle";
-import "./App.css";
+import TodoHeader from "./components/TodoHeader/TodoHeader";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <div className="App"></div>
+      <TodoHeader title="할 일" count={0}></TodoHeader>
     </>
   );
 }
