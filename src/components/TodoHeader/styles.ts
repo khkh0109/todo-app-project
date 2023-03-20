@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../lib/colors";
 
-const Background = styled.div`
+const TodoHeaderContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 15px 0 6px 15px;
@@ -39,4 +39,4 @@ const Completed = styled.span`
   font-size: 13px;
 `;
 
-export { Background, ListContainer, Title, Completed };
+export { TodoHeaderContainer, ListContainer, Title, Completed };

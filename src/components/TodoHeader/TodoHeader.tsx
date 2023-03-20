@@ -1,4 +1,4 @@
-import { Background, ListContainer, Title, Completed } from "./styles";
+import { TodoHeaderContainer, ListContainer, Title, Completed } from "./styles";
 
 interface TodoHeaderProps {
   title: string;
@@ -7,14 +7,14 @@ interface TodoHeaderProps {
 
 function TodoHeader({ title, count }: TodoHeaderProps) {
   return (
-    <Background>
+    <TodoHeaderContainer>
       <ListContainer>
         <img src="assets/todo-header.svg" alt="" />
         <span>목록</span>
       </ListContainer>
       <Title>{title}</Title>
       <Completed>{`${count}개 완료됨`}</Completed>
-    </Background>
+    </TodoHeaderContainer>
   );
 }
 
