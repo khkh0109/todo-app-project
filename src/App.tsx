@@ -1,16 +1,20 @@
 import React from "react";
 import GlobalStyle from "./components/GlobalStyle";
 import TodoHeader from "./components/TodoHeader/TodoHeader";
-import AddNewTodo from "./components/AddNewTodo/AddNewTodo";
-import AddNewTodoInput from "./components/AddNewTodo/AddNewTodoInput";
+import {
+  AddNewTodo,
+  AddNewTodoInput,
+} from "./components/AddNewTodo/AddNewTodo";
+import Todo from "./components/Todo/Todo";
 
-function App() {
+function App(): JSX.Element {
   return (
     <>
       <GlobalStyle />
       <TodoHeader title="할 일" count={0} />
       <AddNewTodo />
       <AddNewTodoInput />
+      <Todo></Todo>
     </>
   );
 }

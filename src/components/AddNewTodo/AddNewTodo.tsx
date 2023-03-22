@@ -1,6 +1,16 @@
-import { AddNewTodoContainer, PlusIcon, NewTodo } from "./styles";
+import React from "react";
+import {
+  AddNewTodoContainer,
+  PlusIcon,
+  NewTodo,
+  AddNewTodoInputContainer,
+  Input,
+  ButtonContainer,
+  PriorityButton,
+  AddButton,
+} from "./style";
 
-function AddNewTodo() {
+function AddNewTodo(): JSX.Element {
   return (
     <AddNewTodoContainer>
       <PlusIcon src="/assets/plus-icon.svg" />
@@ -9,4 +19,16 @@ function AddNewTodo() {
   );
 }
 
-export default AddNewTodo;
+function AddNewTodoInput(): JSX.Element {
+  return (
+    <AddNewTodoInputContainer>
+      <Input type="text" placeholder="새로운 할 일" />
+      <ButtonContainer>
+        <PriorityButton type="button">우선순위</PriorityButton>
+        <AddButton type="button" />
+      </ButtonContainer>
+    </AddNewTodoInputContainer>
+  );
+}
+
+export { AddNewTodo, AddNewTodoInput };

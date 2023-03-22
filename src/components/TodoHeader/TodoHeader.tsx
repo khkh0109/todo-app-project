@@ -1,11 +1,12 @@
-import { TodoHeaderContainer, ListContainer, Title, Completed } from "./styles";
+import React from "react";
+import { TodoHeaderContainer, ListContainer, Title, Completed } from "./style";
 
 interface TodoHeaderProps {
   title: string;
   count: number;
 }
 
-function TodoHeader({ title, count }: TodoHeaderProps) {
+function TodoHeader({ title, count }: TodoHeaderProps): JSX.Element {
   return (
     <TodoHeaderContainer>
       <ListContainer>
