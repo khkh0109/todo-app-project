@@ -22,6 +22,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
   }
 
+  button {
+    padding: 0;
+  }
+
   button:focus,
   button:active,
   input:focus,
