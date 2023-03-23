@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { colors } from "../../lib/colors";
 import { fontWeight } from "../../lib/typography";
 
@@ -26,6 +26,16 @@ const NewTodo = styled.span`
 `;
 
 // AddNewTodoInput
+const modalFadeIn = keyframes`
+0% {
+  transform: translate3d(0, 100%, 0);
+}
+
+100% {
+  transform: translate3d(0, 0, 0);
+}
+`;
+
 const AddNewTodoInputContainer = styled.div`
   width: 100%;
   height: 122px;
@@ -35,6 +45,8 @@ const AddNewTodoInputContainer = styled.div`
   bottom: 0;
   background-color: ${colors.white};
   box-shadow: 0px -20px 28px -9px rgba(0, 0, 0, 0.12);
+  z-index: 1;
+  animation: ${modalFadeIn} 300ms ease-in-out;
 `;
 
 const Input = styled.input`
@@ -79,6 +91,17 @@ const AddButton = styled(Button)`
   background-repeat: no-repeat;
 `;
 
+const Overlay = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: ${colors.black};
+  opacity: 0.3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+`;
+
 export {
   AddNewTodoContainer,
   PlusIcon,
@@ -88,4 +111,5 @@ export {
   ButtonContainer,
   PriorityButton,
   AddButton,
+  Overlay,
 };

@@ -8,6 +8,7 @@ import {
   ButtonContainer,
   PriorityButton,
   AddButton,
+  Overlay,
 } from "./style";
 
 function AddNewTodo(): JSX.Element {
@@ -21,13 +22,16 @@ function AddNewTodo(): JSX.Element {
 
 function AddNewTodoInput(): JSX.Element {
   return (
-    <AddNewTodoInputContainer>
-      <Input type="text" placeholder="새로운 할 일" />
-      <ButtonContainer>
-        <PriorityButton type="button">우선순위</PriorityButton>
-        <AddButton type="button" />
-      </ButtonContainer>
-    </AddNewTodoInputContainer>
+    <>
+      <AddNewTodoInputContainer>
+        <Input type="text" placeholder="새로운 할 일" />
+        <ButtonContainer>
+          <PriorityButton type="button">우선순위</PriorityButton>
+          <AddButton type="button" />
+        </ButtonContainer>
+      </AddNewTodoInputContainer>
+      <Overlay />
+    </>
   );
 }
 
