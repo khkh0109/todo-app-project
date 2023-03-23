@@ -12,6 +12,15 @@ const AddNewTodoContainer = styled.div`
   position: fixed;
   bottom: 0;
   background-color: ${colors.white};
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  .container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
 `;
 
 const PlusIcon = styled.img`
@@ -37,6 +46,7 @@ const modalFadeIn = keyframes`
 `;
 
 const AddNewTodoInputContainer = styled.div`
+  display: none;
   width: 100%;
   height: 122px;
   border-radius: 20px 20px 0 0;
@@ -46,7 +56,11 @@ const AddNewTodoInputContainer = styled.div`
   background-color: ${colors.white};
   box-shadow: 0px -20px 28px -9px rgba(0, 0, 0, 0.12);
   z-index: 1;
-  animation: ${modalFadeIn} 300ms ease-in-out;
+
+  &.is-open {
+    display: block;
+    animation: ${modalFadeIn} 300ms ease-in-out;
+  }
 `;
 
 const Input = styled.input`
@@ -94,12 +108,20 @@ const AddButton = styled(Button)`
 const Overlay = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: ${colors.black};
-  opacity: 0.3;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 0;
+  background-color: ${colors.black};
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
+  cursor: pointer;
+
+  &.is-active {
+    opacity: 0.3;
+    visibility: visible;
+  }
 `;
 
 export {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AddNewTodoContainer,
   PlusIcon,
@@ -12,27 +12,37 @@ import {
 } from "./style";
 
 function AddNewTodo(): JSX.Element {
-  return (
-    <AddNewTodoContainer>
-      <PlusIcon src="/assets/plus-icon.svg" />
-      <NewTodo>새로운 할 일</NewTodo>
-    </AddNewTodoContainer>
-  );
-}
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-function AddNewTodoInput(): JSX.Element {
   return (
     <>
-      <AddNewTodoInputContainer>
+      <AddNewTodoContainer>
+        <div
+          className="container"
+          onClick={() => {
+            setIsModalOpen(!isModalOpen);
+          }}
+        >
+          <PlusIcon src="/assets/plus-icon.svg" />
+          <NewTodo>새로운 할 일</NewTodo>
+        </div>
+      </AddNewTodoContainer>
+
+      <AddNewTodoInputContainer className={isModalOpen ? "is-open" : ""}>
         <Input type="text" placeholder="새로운 할 일" />
         <ButtonContainer>
           <PriorityButton type="button">우선순위</PriorityButton>
           <AddButton type="button" />
         </ButtonContainer>
       </AddNewTodoInputContainer>
-      <Overlay />
+      <Overlay
+        onClick={() => {
+          setIsModalOpen(!isModalOpen);
+        }}
+        className={isModalOpen ? "is-active" : ""}
+      />
     </>
   );
 }
 
-export { AddNewTodo, AddNewTodoInput };
+export { AddNewTodo };
