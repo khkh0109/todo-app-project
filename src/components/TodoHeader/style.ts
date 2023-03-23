@@ -7,6 +7,8 @@ const TodoHeaderContainer = styled.div`
   padding: 15px 0 6px 15px;
   border-bottom: 1px solid ${colors.divider};
   background-color: ${colors.white};
+  position: sticky;
+  top: 0;
 `;
 
 const ListContainer = styled.div`
