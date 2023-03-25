@@ -21,7 +21,8 @@ const List = styled.li`
     border: 2px solid ${colors.gray};
     border-radius: 6px;
     margin-right: 14px;
-    flex-shrink: 0; // 줄어들지 않게 고정
+    flex-shrink: 0;
+    cursor: pointer;
   }
 
   input:checked {

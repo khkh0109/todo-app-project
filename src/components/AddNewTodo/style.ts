@@ -86,6 +86,7 @@ const Button = styled.button`
   padding: 0;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 `;
 
 const PriorityButton = styled(Button)`
@@ -117,6 +118,7 @@ const Overlay = styled.div`
   visibility: hidden;
   transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 
   &.is-active {
     opacity: 0.3;
