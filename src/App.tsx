@@ -1,12 +1,12 @@
 import React from "react";
 import GlobalStyle from "./components/GlobalStyle";
-import TodoList from "./pages/TodoList";
+import TodoListPage from "./pages/TodoListPage";
 
 function App(): JSX.Element {
   return (
     <>
       <GlobalStyle />
-      <TodoList />
+      <TodoListPage />
     </>
   );
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import { TodoHeaderContainer, ListContainer, Title, Completed } from "./style";
 
 interface TodoHeaderProps {

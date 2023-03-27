@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { colors } from "../../lib/colors";
 
+const TodoListWrapper = styled.ul`
+  width: 100%;
+  height: 100%;
+  padding: 0 15px 67px 15px;
+`;
+
 const List = styled.li`
   display: flex;
   justify-content: space-between;
@@ -66,4 +72,4 @@ const List = styled.li`
   }
 `;
 
-export { List };
+export { TodoListWrapper, List };

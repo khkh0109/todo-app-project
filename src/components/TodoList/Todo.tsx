@@ -1,12 +1,15 @@
-import React from "react";
 import { List } from "./style";
 
-function Todo(): JSX.Element {
+interface TodoProps {
+  todo: string;
+}
+
+function Todo({ todo }: TodoProps): JSX.Element {
   return (
     <List>
       <div className="inputContainer">
         <input type="checkbox" />
-        <p>할 일</p>
+        <p>{todo}</p>
       </div>
       <button type="button">
         <svg
