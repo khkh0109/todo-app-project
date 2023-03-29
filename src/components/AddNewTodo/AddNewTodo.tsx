@@ -10,10 +10,18 @@ import {
   AddButton,
   Overlay,
 } from "./style";
+import PRIORITY from "../../lib/priority";
+
+interface TodoItem {
+  id: number;
+  isDone: boolean;
+  content: string;
+  priority: 1 | 2 | 3 | 4;
+}
 
 interface SetTodosProps {
-  todos: string[];
-  setTodos: (todos: string[]) => void;
+  todos: TodoItem[];
+  setTodos: (todos: TodoItem[]) => void;
 }
 
 function AddNewTodo({ todos, setTodos }: SetTodosProps): JSX.Element {
@@ -28,7 +36,13 @@ function AddNewTodo({ todos, setTodos }: SetTodosProps): JSX.Element {
 
   const addTodo = (): void => {
     if (newTodo.trim()) {
-      setTodos([...todos, newTodo]);
+      const newTodoItem: TodoItem = {
+        id: todos.length,
+        isDone: false,
+        content: newTodo,
+        priority: PRIORITY.DEFAULT,
+      };
+      setTodos([...todos, newTodoItem]);
       setNewTodo("");
     }
   };

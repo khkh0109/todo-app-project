@@ -3,8 +3,15 @@ import TodoHeader from "../components/TodoHeader/TodoHeader";
 import TodoList from "../components/TodoList/TodoList";
 import AddNewTodo from "../components/AddNewTodo/AddNewTodo";
 
+interface TodoItem {
+  id: number;
+  isDone: boolean;
+  content: string;
+  priority: 1 | 2 | 3 | 4;
+}
+
 function TodoListPage(): JSX.Element {
-  const [todos, setTodos] = useState<string[]>([]);
+  const [todos, setTodos] = useState<TodoItem[]>([]);
 
   return (
     <>

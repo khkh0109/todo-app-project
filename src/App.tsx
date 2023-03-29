@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 import GlobalStyle from "./components/GlobalStyle";
 import TodoListPage from "./pages/TodoListPage";
 

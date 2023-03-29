@@ -1,15 +1,22 @@
 import { TodoListWrapper } from "./style";
 import Todo from "./Todo";
 
+interface TodoItem {
+  id: number;
+  isDone: boolean;
+  content: string;
+  priority: 1 | 2 | 3 | 4;
+}
+
 interface TodosProps {
-  todos: string[];
+  todos: TodoItem[];
 }
 
 function TodoList({ todos }: TodosProps): JSX.Element {
   return (
     <TodoListWrapper>
-      {todos.map((todo, index) => (
-        <Todo key={index} todo={todo} />
+      {todos.map(todo => (
+        <Todo key={todo.id} todo={todo.content} />
       ))}
     </TodoListWrapper>
   );
