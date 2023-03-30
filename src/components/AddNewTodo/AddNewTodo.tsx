@@ -11,45 +11,31 @@ import {
   Overlay,
 } from "./style";
 import PRIORITY from "../../lib/priority";
+import { nanoid } from "nanoid";
+import TodoItem from "../../model/todoItem";
 
-interface TodoItem {
-  id: number;
-  isDone: boolean;
-  content: string;
-  priority: 1 | 2 | 3 | 4;
-}
-
-interface SetTodosProps {
+interface TodosProps {
   todos: TodoItem[];
   setTodos: (todos: TodoItem[]) => void;
 }
 
-function AddNewTodo({ todos, setTodos }: SetTodosProps): JSX.Element {
+function AddNewTodo({ todos, setTodos }: TodosProps): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newTodo, setNewTodo] = useState("");
 
-  const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setNewTodo(event.target.value);
   };
 
   const addTodo = (): void => {
     if (newTodo.trim()) {
-      const newTodoItem: TodoItem = {
-        id: todos.length,
-        isDone: false,
-        content: newTodo,
-        priority: PRIORITY.DEFAULT,
-      };
+      const newTodoItem: TodoItem = new TodoItem(nanoid(5), newTodo, false, PRIORITY.DEFAULT);
       setTodos([...todos, newTodoItem]);
       setNewTodo("");
     }
   };
 
-  const handleKeyPress = (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ): void => {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>): void => {
     if (event.key === "Enter") {
       addTodo();
     }
