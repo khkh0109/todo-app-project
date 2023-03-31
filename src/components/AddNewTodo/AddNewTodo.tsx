@@ -23,19 +23,28 @@ function AddNewTodo({ todos, setTodos }: TodosProps): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [newTodo, setNewTodo] = useState("");
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleInputChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
     setNewTodo(event.target.value);
   };
 
   const addTodo = (): void => {
     if (newTodo.trim()) {
-      const newTodoItem: TodoItem = new TodoItem(nanoid(5), newTodo, false, PRIORITY.DEFAULT);
+      const newTodoItem: TodoItem = new TodoItem(
+        nanoid(5),
+        newTodo,
+        false,
+        PRIORITY.DEFAULT
+      );
       setTodos([...todos, newTodoItem]);
       setNewTodo("");
     }
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+  const handleKeyPress = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ): void => {
     if (event.key === "Enter") {
       addTodo();
     }

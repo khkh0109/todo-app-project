@@ -5,7 +5,7 @@ interface TodoProps {
   id: string;
   todo: string;
   deleteTodo: (id: string) => void;
-  updateTodo: (oldTodo: string, newTodo: string) => void;
+  updateTodo: (id: string, oldTodo: string, newTodo: string) => void;
 }
 
 function Todo({ id, todo, deleteTodo, updateTodo }: TodoProps): JSX.Element {
@@ -23,11 +23,13 @@ function Todo({ id, todo, deleteTodo, updateTodo }: TodoProps): JSX.Element {
   const handleSave = (): void => {
     if (newTodo.trim()) {
       setIsEditing(false);
-      updateTodo(todo, newTodo);
+      updateTodo(id, todo, newTodo);
     }
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+  const handleKeyPress = (
+    event: React.KeyboardEvent<HTMLInputElement>
+  ): void => {
     if (event.key === "Enter") {
       handleSave();
     }
