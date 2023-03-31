@@ -1,17 +1,54 @@
+import { useState } from "react";
 import { List } from "./style";
 
 interface TodoProps {
   id: string;
   todo: string;
   deleteTodo: (id: string) => void;
+  updateTodo: (oldTodo: string, newTodo: string) => void;
 }
 
-function Todo({ id, todo, deleteTodo }: TodoProps): JSX.Element {
+function Todo({ id, todo, deleteTodo, updateTodo }: TodoProps): JSX.Element {
+  const [isEditing, setIsEditing] = useState(false);
+  const [newTodo, setNewTodo] = useState(todo);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setNewTodo(e.target.value);
+  };
+
+  const handleEdit = (): void => {
+    setIsEditing(true);
+  };
+
+  const handleSave = (): void => {
+    if (newTodo.trim()) {
+      setIsEditing(false);
+      updateTodo(todo, newTodo);
+    }
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === "Enter") {
+      handleSave();
+    }
+  };
+
   return (
     <List>
       <div className="inputContainer">
         <input type="checkbox" />
-        <p>{todo}</p>
+        {isEditing ? (
+          <input
+            type="text"
+            onKeyPress={handleKeyPress}
+            value={newTodo}
+            onChange={handleChange}
+            onBlur={handleSave}
+            autoFocus
+          />
+        ) : (
+          <p onClick={handleEdit}>{todo}</p>
+        )}
       </div>
       <button
         type="button"
@@ -19,7 +56,13 @@ function Todo({ id, todo, deleteTodo }: TodoProps): JSX.Element {
           deleteTodo(id);
         }}
       >
-        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 10 10"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <path
             d="M1.00002 2.41421L2.41423 1L9.4853 8.07107L8.07108 9.48528L1.00002 2.41421Z"
             fill="#C4C4C4"

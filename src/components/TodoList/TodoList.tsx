@@ -12,10 +12,21 @@ function TodoList({ todos, setTodos }: TodosProps): JSX.Element {
     setTodos(todos.filter(todo => todo.id !== id));
   };
 
+  const updateTodo = (oldTodo: string, newTodo: string): void => {
+    setTodos(
+      todos.map(todo => {
+        if (todo.content === oldTodo) {
+          return { ...todo, content: newTodo };
+        }
+        return todo;
+      })
+    );
+  };
+
   return (
     <TodoListWrapper>
       {todos.map(todo => (
-        <Todo key={todo.id} id={todo.id} todo={todo.content} deleteTodo={deleteTodo} />
+        <Todo key={todo.id} id={todo.id} todo={todo.content} deleteTodo={deleteTodo} updateTodo={updateTodo} />
       ))}
     </TodoListWrapper>
   );
