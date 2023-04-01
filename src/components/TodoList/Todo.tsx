@@ -12,16 +12,16 @@ function Todo({ id, todo, deleteTodo, updateTodo }: TodoProps): JSX.Element {
   const [isEditing, setIsEditing] = useState(false);
   const [newTodo, setNewTodo] = useState(todo);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setNewTodo(e.target.value);
-  };
-
   const handleEdit = (): void => {
     setIsEditing(true);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setNewTodo(e.target.value);
+  };
+
   const handleSave = (): void => {
-    if (newTodo.trim()) {
+    if (newTodo.trim() !== "") {
       setIsEditing(false);
       updateTodo(id, todo, newTodo);
     }

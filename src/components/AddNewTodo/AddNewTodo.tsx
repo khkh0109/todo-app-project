@@ -1,18 +1,12 @@
 import { useState } from "react";
-import {
-  AddNewTodoContainer,
-  PlusIcon,
-  NewTodo,
-  AddNewTodoInputContainer,
-  Input,
-  ButtonContainer,
-  PriorityButton,
-  AddButton,
-  Overlay,
-} from "./style";
-import PRIORITY from "../../lib/priority";
 import { nanoid } from "nanoid";
+import PRIORITY from "../../lib/priority";
 import TodoItem from "../../model/todoItem";
+import AddNewTodoButton from "./AddNewTodoButton";
+import InputModal from "./InputModal";
+import PriorityButton from "./PriorityButton";
+import { AddButton } from "./style";
+import Overlay from "./Overlay";
 
 interface TodosProps {
   todos: TodoItem[];
@@ -21,6 +15,7 @@ interface TodosProps {
 
 function AddNewTodo({ todos, setTodos }: TodosProps): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPriorityModalOpen, setIsPriorityModalOpen] = useState(false);
   const [newTodo, setNewTodo] = useState("");
 
   const handleInputChange = (
@@ -30,7 +25,7 @@ function AddNewTodo({ todos, setTodos }: TodosProps): JSX.Element {
   };
 
   const addTodo = (): void => {
-    if (newTodo.trim()) {
+    if (newTodo.trim() !== "") {
       const newTodoItem: TodoItem = new TodoItem(
         nanoid(5),
         newTodo,
@@ -52,38 +47,32 @@ function AddNewTodo({ todos, setTodos }: TodosProps): JSX.Element {
 
   return (
     <>
-      <AddNewTodoContainer>
-        <div
-          className="container"
-          onClick={() => {
-            setIsModalOpen(!isModalOpen);
-          }}
-        >
-          <PlusIcon src="/assets/plus-icon.svg" />
-          <NewTodo>새로운 할 일</NewTodo>
-        </div>
-      </AddNewTodoContainer>
+      <AddNewTodoButton
+        onClick={() => {
+          setIsModalOpen(!isModalOpen);
+        }}
+      />
 
-      {/* Modal */}
-      <AddNewTodoInputContainer className={isModalOpen ? "is-open" : ""}>
-        <Input
-          type="text"
-          value={newTodo}
-          placeholder="새로운 할 일"
-          onChange={handleInputChange}
-          onKeyPress={handleKeyPress}
+      <InputModal
+        isModalOpen={isModalOpen}
+        newTodo={newTodo}
+        handleInputChange={handleInputChange}
+        handleKeyPress={handleKeyPress}
+      >
+        <PriorityButton
+          onClick={() => {
+            setIsPriorityModalOpen(!isPriorityModalOpen);
+          }}
         />
-        <ButtonContainer>
-          <PriorityButton type="button">우선순위</PriorityButton>
-          <AddButton type="button" onClick={addTodo} />
-        </ButtonContainer>
-      </AddNewTodoInputContainer>
+        <AddButton type="button" onClick={addTodo} />
+      </InputModal>
+
       <Overlay
+        isModalOpen={isModalOpen}
         onClick={() => {
           setIsModalOpen(!isModalOpen);
           setNewTodo("");
         }}
-        className={isModalOpen ? "is-active" : ""}
       />
     </>
   );

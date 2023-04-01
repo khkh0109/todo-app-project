@@ -1,8 +1,7 @@
+import { colors } from "./../../lib/colors";
 import styled, { keyframes } from "styled-components";
-import { colors } from "../../lib/colors";
 import { fontWeight } from "../../lib/typography";
 
-// AddNewTodo
 const AddNewTodoContainer = styled.div`
   display: flex;
   align-items: center;
@@ -34,7 +33,6 @@ const NewTodo = styled.span`
   line-height: 1.336005344;
 `;
 
-// AddNewTodoInput
 const modalFadeIn = keyframes`
 0% {
   transform: translate3d(0, 100%, 0);
