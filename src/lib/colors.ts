@@ -1,4 +1,4 @@
-export const colors = {
+const COLORS = {
   black: "#413F3F",
   white: "#ffffff",
   gray: "#C4C4C4",
@@ -7,5 +7,7 @@ export const colors = {
   priority2: "#1FC58B",
   priority3: "#EAB25F",
   divider: "#E6E6E6",
-  "hover-gray-bg": "#5757571d",
+  hoverGrayBg: "#5757571d",
 } as const;
+
+export default COLORS;

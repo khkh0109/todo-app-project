@@ -1,8 +1,8 @@
 const PRIORITY = {
-  HIGH: 1,
-  MEDIUM: 2,
-  LOW: 3,
-  DEFAULT: 4,
+  high: 1,
+  medium: 2,
+  low: 3,
+  default: 4,
 } as const;
 
 export default PRIORITY;

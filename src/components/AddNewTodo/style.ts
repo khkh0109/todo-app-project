@@ -1,6 +1,6 @@
-import { colors } from "./../../lib/colors";
+import COLORS from "./../../lib/colors";
 import styled, { keyframes } from "styled-components";
-import { fontWeight } from "../../lib/typography";
+import FONT_WEIGHT from "../../lib/typography";
 
 const AddNewTodoContainer = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const AddNewTodoContainer = styled.div`
   padding: 15px;
   position: fixed;
   bottom: 0;
-  background-color: ${colors.white};
+  background-color: ${COLORS.white};
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -27,9 +27,9 @@ const PlusIcon = styled.img`
 `;
 
 const NewTodo = styled.span`
-  color: ${colors.main};
+  color: ${COLORS.main};
   font-size: 14.97px;
-  font-weight: ${fontWeight.medium};
+  font-weight: ${FONT_WEIGHT.medium};
   line-height: 1.336005344;
 `;
 
@@ -51,7 +51,7 @@ const AddNewTodoInputContainer = styled.div`
   padding: 35px 20px 20px 20px;
   position: fixed;
   bottom: 0;
-  background-color: ${colors.white};
+  background-color: ${COLORS.white};
   box-shadow: 0px -20px 28px -9px rgba(0, 0, 0, 0.12);
   z-index: 1;
 
@@ -65,12 +65,12 @@ const Input = styled.input`
   width: 100%;
   border: none;
   margin-bottom: 20px;
-  color: ${colors.black};
-  caret-color: ${colors.main};
+  color: ${COLORS.black};
+  caret-color: ${COLORS.main};
   background-color: transparent;
 
   ::placeholder {
-    color: ${colors.gray};
+    color: ${COLORS.gray};
   }
 `;
 
@@ -89,16 +89,16 @@ const Button = styled.button`
 
 const PriorityButton = styled(Button)`
   padding: 0 5px 1px 5px;
-  border: 1px solid ${colors.gray};
+  border: 1px solid ${COLORS.gray};
   border-radius: 3px;
-  color: ${colors.gray};
+  color: ${COLORS.gray};
   font-size: 11px;
   line-height: 1.7272727273;
   transition: all 200ms ease-in;
 
   :hover {
-    border-color: ${colors.main};
-    color: ${colors.main};
+    border-color: ${COLORS.main};
+    color: ${COLORS.main};
   }
 `;
 
@@ -117,7 +117,7 @@ const Overlay = styled.div`
   top: 0;
   left: 0;
   z-index: 0;
-  background-color: ${colors.black};
+  background-color: ${COLORS.black};
   opacity: 0;
   visibility: hidden;
   transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
@@ -137,8 +137,8 @@ const Priority = styled.ul`
   position: absolute;
   top: -172px;
   border-radius: 20px;
-  color: ${colors.black};
-  background: ${colors.white};
+  color: ${COLORS.black};
+  background: ${COLORS.white};
   cursor: pointer;
 
   li {
@@ -154,16 +154,16 @@ const Priority = styled.ul`
     }
 
     :hover {
-      background-color: ${colors["hover-gray-bg"]};
+      background-color: ${COLORS.hoverGrayBg};
     }
   }
 
   li:not(:last-child) {
-    border-bottom: 1px solid ${colors.divider};
+    border-bottom: 1px solid ${COLORS.divider};
   }
 
   li:active {
-    background: ${colors.gray};
+    background: ${COLORS.gray};
   }
 
   &.is-open {

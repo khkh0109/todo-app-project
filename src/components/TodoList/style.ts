@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import PRIORITY from "../../lib/priority";
-import { colors } from "../../lib/colors";
+import COLORS from "../../lib/colors";
 import type { Priority } from "../../model/todoItem";
 
 interface StyleListProps {
@@ -15,14 +15,14 @@ const TodoListWrapper = styled.ul`
 
 const priorityColor = (priority: Priority): string => {
   switch (priority) {
-    case PRIORITY.HIGH:
-      return colors.priority1;
-    case PRIORITY.MEDIUM:
-      return colors.priority2;
-    case PRIORITY.LOW:
-      return colors.priority3;
-    case PRIORITY.DEFAULT:
-      return colors.gray;
+    case PRIORITY.high:
+      return COLORS.priority1;
+    case PRIORITY.medium:
+      return COLORS.priority2;
+    case PRIORITY.low:
+      return COLORS.priority3;
+    case PRIORITY.default:
+      return COLORS.gray;
   }
 };
 
@@ -31,8 +31,8 @@ const List = styled.li<StyleListProps>`
   justify-content: space-between;
   align-items: center;
   padding: 9px 0;
-  border-bottom: 1px solid ${colors.divider};
-  color: ${colors.black};
+  border-bottom: 1px solid ${COLORS.divider};
+  color: ${COLORS.black};
 
   .inputContainer {
     display: flex;
@@ -63,8 +63,8 @@ const List = styled.li<StyleListProps>`
       height: 20px;
       padding: 0;
       border: none;
-      color: ${colors.black};
-      caret-color: ${colors.main};
+      color: ${COLORS.black};
+      caret-color: ${COLORS.main};
     }
 
     input[type="text"],
@@ -89,16 +89,16 @@ const List = styled.li<StyleListProps>`
     :hover {
       cursor: pointer;
       path {
-        fill: ${colors.priority1};
-        stroke: ${colors.priority1};
+        fill: ${COLORS.priority1};
+        stroke: ${COLORS.priority1};
       }
     }
   }
 
   :hover {
     path {
-      fill: ${colors.gray};
-      stroke: ${colors.gray};
+      fill: ${COLORS.gray};
+      stroke: ${COLORS.gray};
     }
   }
 `;

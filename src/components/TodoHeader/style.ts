@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { colors } from "../../lib/colors";
+import COLORS from "../../lib/colors";
 
 const TodoHeaderContainer = styled.div`
   width: 100%;
   height: 100%;
   padding: 15px 15px 6px 15px;
-  border-bottom: 1px solid ${colors.divider};
-  background-color: ${colors.white};
+  border-bottom: 1px solid ${COLORS.divider};
+  background-color: ${COLORS.white};
   position: sticky;
   top: 0;
 `;
@@ -23,7 +23,7 @@ const ListContainer = styled.div`
   }
 
   span {
-    color: ${colors.main};
+    color: ${COLORS.main};
     font-size: 13px;
     line-height: 1;
   }
@@ -31,13 +31,13 @@ const ListContainer = styled.div`
 
 const Title = styled.h1`
   margin-bottom: 7px;
-  color: ${colors.main};
+  color: ${COLORS.main};
   font-size: 33.97px;
   line-height: 1.4424492199;
 `;
 
 const Completed = styled.span`
-  color: ${colors.gray};
+  color: ${COLORS.gray};
   font-size: 13px;
 `;
 

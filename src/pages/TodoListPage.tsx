@@ -7,7 +7,7 @@ import PRIORITY from "../lib/priority";
 
 function TodoListPage(): JSX.Element {
   const [todos, setTodos] = useState<TodoItem[]>([]);
-  const [priority, setPriority] = useState<Priority>(PRIORITY.DEFAULT);
+  const [priority, setPriority] = useState<Priority>(PRIORITY.default);
 
   return (
     <>
