@@ -94,6 +94,12 @@ const PriorityButton = styled(Button)`
   color: ${colors.gray};
   font-size: 11px;
   line-height: 1.7272727273;
+  transition: all 200ms ease-in;
+
+  :hover {
+    border-color: ${colors.main};
+    color: ${colors.main};
+  }
 `;
 
 const AddButton = styled(Button)`
@@ -124,6 +130,47 @@ const Overlay = styled.div`
   }
 `;
 
+const Priority = styled.ul`
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: -172px;
+  border-radius: 20px;
+  color: ${colors.black};
+  background: ${colors.white};
+  cursor: pointer;
+
+  li {
+    padding: 7px 20px;
+    transition: background-color 200ms ease-in;
+
+    :first-child {
+      border-radius: 20px 20px 0 0;
+    }
+
+    :last-child {
+      border-radius: 0 0 20px 20px;
+    }
+
+    :hover {
+      background-color: ${colors["hover-gray-bg"]};
+    }
+  }
+
+  li:not(:last-child) {
+    border-bottom: 1px solid ${colors.divider};
+  }
+
+  li:active {
+    background: ${colors.gray};
+  }
+
+  &.is-open {
+    display: flex;
+  }
+`;
+
 export {
   AddNewTodoContainer,
   PlusIcon,
@@ -134,4 +181,5 @@ export {
   PriorityButton,
   AddButton,
   Overlay,
+  Priority,
 };

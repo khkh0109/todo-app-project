@@ -7,4 +7,5 @@ export const colors = {
   priority2: "#1FC58B",
   priority3: "#EAB25F",
   divider: "#E6E6E6",
+  "hover-gray-bg": "#5757571d",
 } as const;

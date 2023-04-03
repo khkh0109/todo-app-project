@@ -1,14 +1,22 @@
 import { useState } from "react";
 import { List } from "./style";
+import type { Priority } from "../../model/todoItem";
 
 interface TodoProps {
   id: string;
   todo: string;
   deleteTodo: (id: string) => void;
-  updateTodo: (id: string, oldTodo: string, newTodo: string) => void;
+  updateTodo: (id: string, newTodo: string) => void;
+  priority: Priority;
 }
 
-function Todo({ id, todo, deleteTodo, updateTodo }: TodoProps): JSX.Element {
+function Todo({
+  id,
+  todo,
+  deleteTodo,
+  updateTodo,
+  priority,
+}: TodoProps): JSX.Element {
   const [isEditing, setIsEditing] = useState(false);
   const [newTodo, setNewTodo] = useState(todo);
 
@@ -23,7 +31,7 @@ function Todo({ id, todo, deleteTodo, updateTodo }: TodoProps): JSX.Element {
   const handleSave = (): void => {
     if (newTodo.trim() !== "") {
       setIsEditing(false);
-      updateTodo(id, todo, newTodo);
+      updateTodo(id, newTodo);
     }
   };
 
@@ -36,7 +44,7 @@ function Todo({ id, todo, deleteTodo, updateTodo }: TodoProps): JSX.Element {
   };
 
   return (
-    <List>
+    <List priority={priority}>
       <div className="inputContainer">
         <input type="checkbox" />
         {isEditing ? (

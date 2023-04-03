@@ -1,5 +1,11 @@
 import styled from "styled-components";
+import PRIORITY from "../../lib/priority";
 import { colors } from "../../lib/colors";
+import type { Priority } from "../../model/todoItem";
+
+interface StyleListProps {
+  priority: Priority;
+}
 
 const TodoListWrapper = styled.ul`
   width: 100%;
@@ -7,7 +13,20 @@ const TodoListWrapper = styled.ul`
   padding: 0 15px 67px 15px;
 `;
 
-const List = styled.li`
+const priorityColor = (priority: Priority): string => {
+  switch (priority) {
+    case PRIORITY.HIGH:
+      return colors.priority1;
+    case PRIORITY.MEDIUM:
+      return colors.priority2;
+    case PRIORITY.LOW:
+      return colors.priority3;
+    case PRIORITY.DEFAULT:
+      return colors.gray;
+  }
+};
+
+const List = styled.li<StyleListProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,15 +45,14 @@ const List = styled.li`
       flex-shrink: 0;
       width: 20px;
       height: 20px;
-      border: 2px solid ${colors.gray};
+      border: 2px solid ${props => priorityColor(props.priority)};
       border-radius: 6px;
       margin-right: 14px;
       cursor: pointer;
     }
 
     input:checked {
-      border-color: ${colors.gray};
-      background-color: ${colors.gray};
+      background-color: ${props => priorityColor(props.priority)};
       background-image: url("/assets/check.svg");
       background-repeat: no-repeat;
       background-position: center;

@@ -1,4 +1,6 @@
 import { AddNewTodoInputContainer, Input, ButtonContainer } from "./style";
+import PriorityModal from "./PriorityModal";
+import { type Priority } from "../../model/todoItem";
 
 interface InputModalProps {
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -6,6 +8,9 @@ interface InputModalProps {
   isModalOpen: boolean;
   newTodo: string;
   children: React.ReactNode;
+  setPriority: (priority: Priority) => void;
+  isPriorityModalOpen: boolean;
+  setIsPriorityModalOpen: (isPriorityModalOpen: boolean) => void;
 }
 
 function InputModal({
@@ -14,6 +19,9 @@ function InputModal({
   handleInputChange,
   handleKeyPress,
   children,
+  setPriority,
+  isPriorityModalOpen,
+  setIsPriorityModalOpen,
 }: InputModalProps): JSX.Element {
   return (
     <AddNewTodoInputContainer className={isModalOpen ? "is-open" : ""}>
@@ -25,6 +33,11 @@ function InputModal({
         onKeyPress={handleKeyPress}
       />
       <ButtonContainer>{children}</ButtonContainer>
+      <PriorityModal
+        setPriority={setPriority}
+        isPriorityModalOpen={isPriorityModalOpen}
+        setIsPriorityModalOpen={setIsPriorityModalOpen}
+      />
     </AddNewTodoInputContainer>
   );
 }

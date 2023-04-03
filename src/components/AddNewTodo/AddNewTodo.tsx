@@ -1,19 +1,26 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
-import PRIORITY from "../../lib/priority";
-import TodoItem from "../../model/todoItem";
+import { TodoItem } from "../../model/todoItem";
 import AddNewTodoButton from "./AddNewTodoButton";
 import InputModal from "./InputModal";
 import PriorityButton from "./PriorityButton";
 import { AddButton } from "./style";
 import Overlay from "./Overlay";
+import { type Priority } from "../../model/todoItem";
 
-interface TodosProps {
+interface AddNewTodoProps {
   todos: TodoItem[];
   setTodos: (todos: TodoItem[]) => void;
+  priority: Priority;
+  setPriority: (priority: Priority) => void;
 }
 
-function AddNewTodo({ todos, setTodos }: TodosProps): JSX.Element {
+function AddNewTodo({
+  todos,
+  setTodos,
+  priority,
+  setPriority,
+}: AddNewTodoProps): JSX.Element {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPriorityModalOpen, setIsPriorityModalOpen] = useState(false);
   const [newTodo, setNewTodo] = useState("");
@@ -24,13 +31,13 @@ function AddNewTodo({ todos, setTodos }: TodosProps): JSX.Element {
     setNewTodo(event.target.value);
   };
 
-  const addTodo = (): void => {
+  const addTodo = (priority: Priority): void => {
     if (newTodo.trim() !== "") {
       const newTodoItem: TodoItem = new TodoItem(
         nanoid(5),
         newTodo,
         false,
-        PRIORITY.DEFAULT
+        priority
       );
       setTodos([...todos, newTodoItem]);
       setNewTodo("");
@@ -41,7 +48,7 @@ function AddNewTodo({ todos, setTodos }: TodosProps): JSX.Element {
     event: React.KeyboardEvent<HTMLInputElement>
   ): void => {
     if (event.key === "Enter") {
-      addTodo();
+      addTodo(priority);
     }
   };
 
@@ -58,13 +65,21 @@ function AddNewTodo({ todos, setTodos }: TodosProps): JSX.Element {
         newTodo={newTodo}
         handleInputChange={handleInputChange}
         handleKeyPress={handleKeyPress}
+        setPriority={setPriority}
+        isPriorityModalOpen={isPriorityModalOpen}
+        setIsPriorityModalOpen={setIsPriorityModalOpen}
       >
         <PriorityButton
           onClick={() => {
             setIsPriorityModalOpen(!isPriorityModalOpen);
           }}
         />
-        <AddButton type="button" onClick={addTodo} />
+        <AddButton
+          type="button"
+          onClick={() => {
+            addTodo(priority);
+          }}
+        />
       </InputModal>
 
       <Overlay
@@ -72,6 +87,7 @@ function AddNewTodo({ todos, setTodos }: TodosProps): JSX.Element {
         onClick={() => {
           setIsModalOpen(!isModalOpen);
           setNewTodo("");
+          setIsPriorityModalOpen(false);
         }}
       />
     </>

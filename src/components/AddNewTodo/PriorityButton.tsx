@@ -6,9 +6,11 @@ interface PriorityButtonProps {
 
 function PriorityButton({ onClick }: PriorityButtonProps): JSX.Element {
   return (
-    <StyledPriorityButton type="button" onClick={onClick}>
-      우선순위
-    </StyledPriorityButton>
+    <>
+      <StyledPriorityButton type="button" onClick={onClick}>
+        우선순위
+      </StyledPriorityButton>
+    </>
   );
 }
 

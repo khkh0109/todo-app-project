@@ -1,4 +1,4 @@
-export type Priority = 1 | 2 | 3 | 4;
+type Priority = 1 | 2 | 3 | 4;
 
 class TodoItem {
   id: string;
@@ -19,4 +19,4 @@ class TodoItem {
   }
 }
 
-export default TodoItem;
+export { type Priority, TodoItem };
