@@ -1,4 +1,5 @@
-import { TodoHeaderContainer, ListContainer, Title, Completed } from "./style";
+import { TodoHeaderContainer, ListButton, Title, Completed } from "./style";
+import { useNavigate } from "react-router-dom";
 
 interface TodoHeaderProps {
   title: string;
@@ -6,12 +7,17 @@ interface TodoHeaderProps {
 }
 
 function TodoHeader({ title, count }: TodoHeaderProps): JSX.Element {
+  const navigate = useNavigate();
+
   return (
     <TodoHeaderContainer>
-      <ListContainer>
-        <img src="assets/todo-header.svg" alt="" />
-        <span>목록</span>
-      </ListContainer>
+      <ListButton
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        목록
+      </ListButton>
       <Title>{title}</Title>
       <Completed>{`${count}개 완료됨`}</Completed>
     </TodoHeaderContainer>

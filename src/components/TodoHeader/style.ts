@@ -11,21 +11,22 @@ const TodoHeaderContainer = styled.div`
   top: 0;
 `;
 
-const ListContainer = styled.div`
+const ListButton = styled.button`
   display: flex;
   align-items: center;
   margin-bottom: 7.59px;
+  color: ${COLORS.main};
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
 
-  img {
-    margin-right: 6px;
+  :before {
+    content: "";
     width: 8.12px;
     height: 13.41px;
-  }
-
-  span {
-    color: ${COLORS.main};
-    font-size: 13px;
-    line-height: 1;
+    margin-right: 6px;
+    background-image: url("/assets/todo-header.svg");
+    background-repeat: no-repeat;
   }
 `;
 
@@ -41,4 +42,4 @@ const Completed = styled.span`
   font-size: 13px;
 `;
 
-export { TodoHeaderContainer, ListContainer, Title, Completed };
+export { TodoHeaderContainer, ListButton, Title, Completed };
