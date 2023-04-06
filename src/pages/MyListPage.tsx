@@ -1,32 +1,29 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { nanoid } from "nanoid";
+import { type TodoItem } from "../model/todoItem";
 
 interface List {
   id: string;
   title: string;
+  list: TodoItem[];
 }
 
 interface MyListPageProps {
   lists: List[];
   setLists: (newLists: List[]) => void;
-  addList: (newList: List) => void;
 }
 
-function MyListPage({
-  lists,
-  setLists,
-  addList,
-}: MyListPageProps): JSX.Element {
+function MyListPage({ lists, setLists }: MyListPageProps): JSX.Element {
   const [input, setInput] = useState("");
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInput(e.target.value);
   };
 
-  const handleAddList = (): void => {
-    const newList = { id: nanoid(5), title: input };
-    addList(newList);
+  const addList = (): void => {
+    const newList = { id: nanoid(5), title: input, list: [] };
+    setLists([...lists, newList]);
     setInput("");
   };
 
@@ -61,7 +58,7 @@ function MyListPage({
         onChange={handleInput}
         value={input}
       />
-      <button type="button" onClick={handleAddList}>
+      <button type="button" onClick={addList}>
         목록 생성
       </button>
     </>

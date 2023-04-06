@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { TodoListWrapper } from "./style";
 import Todo from "./Todo";
 import type { Priority, TodoItem } from "../../model/todoItem";
@@ -17,7 +17,7 @@ function TodoList({ todos, setTodos, setPriority }: TodosProps): JSX.Element {
   const updateTodo = (id: string, newTodo: string): void => {
     setTodos(
       todos.map(todo => {
-        if (todo.id === id) {
+        if (todo.id === id && newTodo !== undefined) {
           return { ...todo, content: newTodo };
         }
         return todo;
@@ -25,9 +25,20 @@ function TodoList({ todos, setTodos, setPriority }: TodosProps): JSX.Element {
     );
   };
 
-  useEffect(() => {
-    setPriority(4);
-  }, [todos]);
+  const updateChecked = (id: string, checked: boolean): void => {
+    setTodos(
+      todos.map(todo => {
+        if (todo.id === id) {
+          return { ...todo, isDone: checked };
+        }
+        return todo;
+      })
+    );
+  };
+
+  // useEffect(() => {
+  //   setPriority(4);
+  // }, [todos]);
 
   return (
     <TodoListWrapper>
@@ -38,7 +49,9 @@ function TodoList({ todos, setTodos, setPriority }: TodosProps): JSX.Element {
           todo={todo.content}
           deleteTodo={deleteTodo}
           updateTodo={updateTodo}
+          updateChecked={updateChecked}
           priority={todo.priority}
+          isDone={todo.isDone}
         />
       ))}
     </TodoListWrapper>

@@ -9,16 +9,20 @@ import { useParams } from "react-router-dom";
 interface List {
   id: string;
   title: string;
+  list: TodoItem[];
 }
 
 interface TodoListPageProps {
   lists: List[];
+  setLists: (lists: List[]) => void;
 }
 
-function TodoListPage({ lists }: TodoListPageProps): JSX.Element {
+function TodoListPage({ lists, setLists }: TodoListPageProps): JSX.Element {
   const { listId } = useParams();
   const list = lists.find(list => list.id === listId);
-  const [todos, setTodos] = useState<TodoItem[]>([]);
+  const listIdx = lists.findIndex(list => list.id === listId);
+  const init = list === undefined ? [] : list.list;
+  const [todos, setTodos] = useState<TodoItem[]>(init);
   const [priority, setPriority] = useState<Priority>(PRIORITY.default);
 
   if (list === undefined) {
@@ -34,6 +38,11 @@ function TodoListPage({ lists }: TodoListPageProps): JSX.Element {
         setTodos={setTodos}
         priority={priority}
         setPriority={setPriority}
+        lists={lists}
+        setLists={setLists}
+        listId={listId}
+        list={list}
+        listIdx={listIdx}
       />
     </>
   );

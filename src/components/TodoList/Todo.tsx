@@ -7,7 +7,9 @@ interface TodoProps {
   todo: string;
   deleteTodo: (id: string) => void;
   updateTodo: (id: string, newTodo: string) => void;
+  updateChecked: (id: string, checked: boolean) => void;
   priority: Priority;
+  isDone: boolean;
 }
 
 function Todo({
@@ -15,7 +17,9 @@ function Todo({
   todo,
   deleteTodo,
   updateTodo,
+  updateChecked,
   priority,
+  isDone,
 }: TodoProps): JSX.Element {
   const [isEditing, setIsEditing] = useState(false);
   const [newTodo, setNewTodo] = useState(todo);
@@ -43,10 +47,14 @@ function Todo({
     }
   };
 
+  const handleChecked = (e: React.MouseEvent<HTMLInputElement>): void => {
+    updateChecked(id, e.currentTarget.checked);
+  };
+
   return (
     <List priority={priority}>
       <div className="inputContainer">
-        <input type="checkbox" />
+        <input type="checkbox" onClick={handleChecked} checked={isDone} />
         {isEditing ? (
           <input
             type="text"

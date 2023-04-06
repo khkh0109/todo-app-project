@@ -2,19 +2,23 @@ import GlobalStyle from "./components/GlobalStyle";
 import MyListPage from "./pages/MyListPage";
 import { Routes, Route } from "react-router-dom";
 import TodoListPage from "./pages/TodoListPage";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { type TodoItem } from "./model/todoItem";
 
 interface List {
   id: string;
   title: string;
+  list: TodoItem[];
 }
 
 function App(): JSX.Element {
-  const [lists, setLists] = useState<List[]>([]);
+  const isListExists = "todoList" in localStorage;
+  const initialLists = isListExists ? JSON.parse(localStorage.todoList) : [];
+  const [lists, setLists] = useState<List[]>(initialLists);
 
-  const addList = (newList: List): void => {
-    setLists([...lists, newList]);
-  };
+  useEffect(() => {
+    localStorage.setItem("todoList", JSON.stringify(lists));
+  }, [lists]);
 
   return (
     <>
@@ -22,11 +26,12 @@ function App(): JSX.Element {
       <Routes>
         <Route
           path="/"
-          element={
-            <MyListPage lists={lists} setLists={setLists} addList={addList} />
-          }
+          element={<MyListPage lists={lists} setLists={setLists} />}
         ></Route>
-        <Route path="/:listId" element={<TodoListPage lists={lists} />}></Route>
+        <Route
+          path="/:listId"
+          element={<TodoListPage lists={lists} setLists={setLists} />}
+        ></Route>
       </Routes>
     </>
   );
