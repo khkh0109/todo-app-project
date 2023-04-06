@@ -47,14 +47,14 @@ function Todo({
     }
   };
 
-  const handleChecked = (e: React.MouseEvent<HTMLInputElement>): void => {
-    updateChecked(id, e.currentTarget.checked);
+  const handleChecked = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    updateChecked(id, e.target.checked);
   };
 
   return (
     <List priority={priority}>
       <div className="inputContainer">
-        <input type="checkbox" onClick={handleChecked} checked={isDone} />
+        <input type="checkbox" onChange={handleChecked} checked={isDone} />
         {isEditing ? (
           <input
             type="text"

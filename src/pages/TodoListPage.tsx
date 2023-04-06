@@ -25,6 +25,7 @@ function TodoListPage({ lists, setLists }: TodoListPageProps): JSX.Element {
   const [todos, setTodos] = useState<TodoItem[]>(init);
   const [priority, setPriority] = useState<Priority>(PRIORITY.default);
 
+  console.log(list);
   if (list === undefined) {
     return <h1>List not found</h1>;
   }
