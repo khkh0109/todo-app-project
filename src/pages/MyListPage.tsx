@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
 import { type List } from "../types/interface";
+import MyListHeader from "../components/MyListHeader/MyListHeader";
+import MyList from "../components/MyList/MyList";
+import AddNewList from "../components/AddNewList/AddNewList";
 
 interface MyListPageProps {
   lists: List[];
@@ -16,9 +18,11 @@ function MyListPage({ lists, setLists }: MyListPageProps): JSX.Element {
   };
 
   const addList = (): void => {
-    const newList = { id: nanoid(5), title: input, list: [] };
-    setLists([...lists, newList]);
-    setInput("");
+    if (input.trim() !== "") {
+      const newList = { id: nanoid(5), title: input, list: [] };
+      setLists([...lists, newList]);
+      setInput("");
+    }
   };
 
   const deleteList = (id: string): void => {
@@ -28,33 +32,14 @@ function MyListPage({ lists, setLists }: MyListPageProps): JSX.Element {
 
   return (
     <>
-      <h1>나의 목록</h1>
-      <ul>
-        {lists.map((list: List) => {
-          return (
-            <li key={list.id}>
-              <Link to={`/${list.id}`}>{list.title}</Link>
-              <button
-                type="button"
-                onClick={() => {
-                  deleteList(list.id);
-                }}
-              >
-                삭제
-              </button>
-            </li>
-          );
-        })}
-      </ul>
-      <input
-        type="text"
-        placeholder="목록을 입력하세요"
-        onChange={handleInput}
-        value={input}
+      <MyListHeader />
+      <MyList lists={lists} deleteList={deleteList} />
+      <AddNewList
+        input={input}
+        handleInput={handleInput}
+        addList={addList}
+        setInput={setInput}
       />
-      <button type="button" onClick={addList}>
-        목록 생성
-      </button>
     </>
   );
 }

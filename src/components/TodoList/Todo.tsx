@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { Priority } from "../../model/todoItem";
 import { List } from "./style";
+import DeleteButton from "../../common/DeleteButton.style";
 
 interface TodoProps {
   id: string;
@@ -66,7 +67,7 @@ function Todo({
           <p onClick={handleEdit}>{content}</p>
         )}
       </div>
-      <button
+      <DeleteButton
         type="button"
         onClick={() => {
           deleteTodo(id);
@@ -92,7 +93,7 @@ function Todo({
             strokeWidth="0.5"
           />
         </svg>
-      </button>
+      </DeleteButton>
     </List>
   );
 }

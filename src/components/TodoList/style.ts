@@ -75,26 +75,6 @@ const List = styled.li<StyleListProps>`
     }
   }
 
-  button {
-    display: flex;
-    align-items: center;
-    border: none;
-    background-color: transparent;
-
-    path {
-      fill: transparent;
-      stroke: transparent;
-    }
-
-    :hover {
-      cursor: pointer;
-      path {
-        fill: ${COLORS.priority1};
-        stroke: ${COLORS.priority1};
-      }
-    }
-  }
-
   :hover {
     path {
       fill: ${COLORS.gray};

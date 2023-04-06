@@ -23,9 +23,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button {
+    padding: 0;
     border: none;
     background-color: transparent;
-    padding: 0;
+    cursor: pointer;
   }
 
   button:focus,

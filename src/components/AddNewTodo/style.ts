@@ -1,6 +1,7 @@
 import COLORS from "./../../lib/colors";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import FONT_WEIGHT from "../../lib/typography";
+import modalFadeIn from "../../lib/animation";
 
 const AddNewTodoContainer = styled.div`
   display: flex;
@@ -31,16 +32,6 @@ const NewTodo = styled.span`
   font-size: 14.97px;
   font-weight: ${FONT_WEIGHT.medium};
   line-height: 1.336005344;
-`;
-
-const modalFadeIn = keyframes`
-0% {
-  transform: translate3d(0, 100%, 0);
-}
-
-100% {
-  transform: translate3d(0, 0, 0);
-}
 `;
 
 const AddNewTodoInputContainer = styled.div`
@@ -80,14 +71,7 @@ const ButtonContainer = styled.div`
   align-items: center;
 `;
 
-const Button = styled.button`
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-`;
-
-const PriorityButton = styled(Button)`
+const PriorityButton = styled.button`
   padding: 0 5px 1px 5px;
   border: 1px solid ${COLORS.gray};
   border-radius: 3px;
@@ -99,34 +83,6 @@ const PriorityButton = styled(Button)`
   :hover {
     border-color: ${COLORS.main};
     color: ${COLORS.main};
-  }
-`;
-
-const AddButton = styled(Button)`
-  width: 20px;
-  height: 20px;
-  padding: 0;
-  background-image: url("./assets/plus-icon.svg");
-  background-repeat: no-repeat;
-`;
-
-const Overlay = styled.div`
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  background-color: ${COLORS.black};
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
-  cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-
-  &.is-active {
-    opacity: 0.3;
-    visibility: visible;
   }
 `;
 
@@ -179,7 +135,5 @@ export {
   Input,
   ButtonContainer,
   PriorityButton,
-  AddButton,
-  Overlay,
   Priority,
 };
