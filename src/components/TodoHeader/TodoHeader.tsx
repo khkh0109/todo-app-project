@@ -1,5 +1,5 @@
-import { TodoHeaderContainer, ListButton, Title, Completed } from "./style";
 import { useNavigate } from "react-router-dom";
+import { TodoHeaderContainer, ListButton, Title, Completed } from "./style";
 
 interface TodoHeaderProps {
   title: string;

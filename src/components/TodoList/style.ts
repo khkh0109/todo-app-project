@@ -7,12 +7,6 @@ interface StyleListProps {
   priority: Priority;
 }
 
-const TodoListWrapper = styled.ul`
-  width: 100%;
-  height: 100%;
-  padding: 0 15px 67px 15px;
-`;
-
 const priorityColor = (priority: Priority): string => {
   switch (priority) {
     case PRIORITY.high:
@@ -25,6 +19,12 @@ const priorityColor = (priority: Priority): string => {
       return COLORS.gray;
   }
 };
+
+const TodoListWrapper = styled.ul`
+  width: 100%;
+  height: 100%;
+  padding: 0 15px 67px 15px;
+`;
 
 const List = styled.li<StyleListProps>`
   display: flex;

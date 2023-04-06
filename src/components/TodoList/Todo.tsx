@@ -1,28 +1,28 @@
 import { useState } from "react";
-import { List } from "./style";
 import type { Priority } from "../../model/todoItem";
+import { List } from "./style";
 
 interface TodoProps {
   id: string;
-  todo: string;
+  content: string;
+  isDone: boolean;
+  priority: Priority;
   deleteTodo: (id: string) => void;
   updateTodo: (id: string, newTodo: string) => void;
   updateChecked: (id: string, checked: boolean) => void;
-  priority: Priority;
-  isDone: boolean;
 }
 
 function Todo({
   id,
-  todo,
+  content,
+  isDone,
+  priority,
   deleteTodo,
   updateTodo,
   updateChecked,
-  priority,
-  isDone,
 }: TodoProps): JSX.Element {
+  const [newTodo, setNewTodo] = useState(content);
   const [isEditing, setIsEditing] = useState(false);
-  const [newTodo, setNewTodo] = useState(todo);
 
   const handleEdit = (): void => {
     setIsEditing(true);
@@ -39,10 +39,8 @@ function Todo({
     }
   };
 
-  const handleKeyPress = (
-    event: React.KeyboardEvent<HTMLInputElement>
-  ): void => {
-    if (event.key === "Enter") {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (e.key === "Enter") {
       handleSave();
     }
   };
@@ -58,14 +56,14 @@ function Todo({
         {isEditing ? (
           <input
             type="text"
-            onKeyPress={handleKeyPress}
             value={newTodo}
+            autoFocus
+            onKeyPress={handleKeyPress}
             onChange={handleChange}
             onBlur={handleSave}
-            autoFocus
           />
         ) : (
-          <p onClick={handleEdit}>{todo}</p>
+          <p onClick={handleEdit}>{content}</p>
         )}
       </div>
       <button

@@ -1,17 +1,11 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { nanoid } from "nanoid";
-import { type TodoItem } from "../model/todoItem";
-
-interface List {
-  id: string;
-  title: string;
-  list: TodoItem[];
-}
+import { type List } from "../types/interface";
 
 interface MyListPageProps {
   lists: List[];
-  setLists: (newLists: List[]) => void;
+  setLists: (lists: List[]) => void;
 }
 
 function MyListPage({ lists, setLists }: MyListPageProps): JSX.Element {
