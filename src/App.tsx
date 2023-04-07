@@ -3,12 +3,12 @@ import { Routes, Route } from "react-router-dom";
 import GlobalStyle from "./components/GlobalStyle";
 import MyListPage from "./pages/MyListPage";
 import TodoListPage from "./pages/TodoListPage";
-import { type List } from "./types/interface";
+import type ListItem from "./model/listItem";
 
 function App(): JSX.Element {
   const isListExists = "todoList" in localStorage;
   const initialLists = isListExists ? JSON.parse(localStorage.todoList) : [];
-  const [lists, setLists] = useState<List[]>(initialLists);
+  const [lists, setLists] = useState<ListItem[]>(initialLists);
 
   useEffect(() => {
     localStorage.setItem("todoList", JSON.stringify(lists));

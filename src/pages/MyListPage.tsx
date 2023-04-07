@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { nanoid } from "nanoid";
-import { type List } from "../types/interface";
 import MyListHeader from "../components/MyListHeader/MyListHeader";
 import MyList from "../components/MyList/MyList";
 import AddNewList from "../components/AddNewList/AddNewList";
+import ListItem from "../model/listItem";
 
 interface MyListPageProps {
-  lists: List[];
-  setLists: (lists: List[]) => void;
+  lists: ListItem[];
+  setLists: (lists: ListItem[]) => void;
 }
 
 function MyListPage({ lists, setLists }: MyListPageProps): JSX.Element {
@@ -19,7 +19,7 @@ function MyListPage({ lists, setLists }: MyListPageProps): JSX.Element {
 
   const addList = (): void => {
     if (input.trim() !== "") {
-      const newList = { id: nanoid(5), title: input, list: [] };
+      const newList = new ListItem(nanoid(5), input, []);
       setLists([...lists, newList]);
       setInput("");
     }

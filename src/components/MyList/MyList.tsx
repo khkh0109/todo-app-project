@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 import { List as StyleList } from "./style";
-import { type List } from "../../types/interface";
+import type ListItem from "../../model/listItem";
 import DeleteButton from "../../common/DeleteButton.style";
 
 interface MyListProps {
-  lists: List[];
+  lists: ListItem[];
   deleteList: (id: string) => void;
 }
 
 function MyList({ lists, deleteList }: MyListProps): JSX.Element {
   return (
     <StyleList>
-      {lists.map((list: List) => {
+      {lists.map((list: ListItem) => {
         return (
           <li key={list.id}>
             <Link to={`/${list.id}`}>{list.title}</Link>

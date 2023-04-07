@@ -4,10 +4,10 @@ import TodoHeader from "../components/TodoHeader/TodoHeader";
 import TodoList from "../components/TodoList/TodoList";
 import AddNewTodo from "../components/AddNewTodo/AddNewTodo";
 import type { TodoItem } from "../model/todoItem";
-import { type List } from "../types/interface";
+import type ListItem from "../model/listItem";
 
 interface TodoListPageProps {
-  lists: List[];
+  lists: ListItem[];
 }
 
 function TodoListPage({ lists }: TodoListPageProps): JSX.Element {

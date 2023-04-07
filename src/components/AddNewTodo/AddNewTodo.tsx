@@ -6,12 +6,12 @@ import PriorityButton from "./PriorityButton";
 import Overlay from "../../common/Overlay";
 import AddButton from "../../common/AddButton";
 import { type Priority, TodoItem } from "../../model/todoItem";
-import { type List } from "../../types/interface";
+import type ListItem from "../../model/listItem";
 import PRIORITY from "../../lib/priority";
 
 interface AddNewTodoProps {
-  list: List | undefined;
-  lists: List[];
+  list: ListItem | undefined;
+  lists: ListItem[];
   todos: TodoItem[];
   setTodos: (todos: TodoItem[]) => void;
 }
