@@ -21,13 +21,13 @@ function TodoListPage({ lists }: TodoListPageProps): JSX.Element {
   const initCount = done === undefined ? 0 : done.length;
   const [count, setCount] = useState<number>(initCount);
 
-  if (list === undefined) {
-    return <h1>List not found</h1>;
-  }
-
   useEffect(() => {
     setCount(done === undefined ? 0 : done.length);
   }, [done]);
+
+  if (list === undefined) {
+    return <h1>List not found</h1>;
+  }
 
   return (
     <>
