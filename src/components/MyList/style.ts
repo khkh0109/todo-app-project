@@ -8,12 +8,17 @@ const List = styled.ul`
   color: ${COLORS.black};
   font-weight: ${FONT_WEIGHT.medium};
 
+  a {
+    width: 100%;
+    padding: 15px 0 15px 0;
+  }
+
   li {
     display: flex;
     justify-content: space-between;
-    padding: 15px 0 15px 0;
     border-bottom: 1px solid ${COLORS.divider};
     font-size: 15px;
+    cursor: pointer;
 
     :hover {
       path {
