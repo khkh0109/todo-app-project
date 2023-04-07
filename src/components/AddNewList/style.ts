@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import COLORS from "../../lib/colors";
 import modalFadeIn from "../../lib/animation";
-// import FONT_WEIGHT from '../../lib/typography';
 
 const ModalContainer = styled.div`
   display: none;
@@ -14,6 +13,10 @@ const ModalContainer = styled.div`
   background-color: ${COLORS.white};
   box-shadow: 0px -20px 28px -9px rgba(0, 0, 0, 0.12);
   z-index: 1;
+
+  @media screen and (min-width: 576px) {
+    width: 576px;
+  }
 
   &.is-open {
     display: block;

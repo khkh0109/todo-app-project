@@ -22,6 +22,10 @@ const AddNewTodoContainer = styled.div`
   -ms-user-select: none;
   user-select: none;
 
+  @media screen and (min-width: 576px) {
+    width: 576px;
+  }
+
   .container {
     display: flex;
     align-items: center;
@@ -51,6 +55,10 @@ const AddNewTodoInputContainer = styled.div`
   background-color: ${COLORS.white};
   box-shadow: 0px -20px 28px -9px rgba(0, 0, 0, 0.12);
   z-index: 1;
+
+  @media screen and (min-width: 576px) {
+    width: 576px;
+  }
 
   &.is-open {
     display: block;

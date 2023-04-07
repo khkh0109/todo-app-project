@@ -8,8 +8,10 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     font-family: "Noto Sans KR", sans-serif;
+    max-width: 576px;
+    margin: 0 auto;
   }
-
+  
   a {
     color: inherit;
     text-decoration: none;
