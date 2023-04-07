@@ -1,24 +1,11 @@
 import styled from "styled-components";
-import PRIORITY from "../../lib/priority";
 import COLORS from "../../lib/colors";
 import type { Priority } from "../../model/todoItem";
+import priorityColor from "../priorityColor";
 
 interface StyleListProps {
   priority: Priority;
 }
-
-const priorityColor = (priority: Priority): string => {
-  switch (priority) {
-    case PRIORITY.high:
-      return COLORS.priority1;
-    case PRIORITY.medium:
-      return COLORS.priority2;
-    case PRIORITY.low:
-      return COLORS.priority3;
-    case PRIORITY.default:
-      return COLORS.gray;
-  }
-};
 
 const TodoListWrapper = styled.ul`
   width: 100%;

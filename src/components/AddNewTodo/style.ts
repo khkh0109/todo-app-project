@@ -2,6 +2,12 @@ import COLORS from "./../../lib/colors";
 import styled from "styled-components";
 import FONT_WEIGHT from "../../lib/typography";
 import modalFadeIn from "../../lib/animation";
+import priorityColor from "../priorityColor";
+import type { Priority } from "../../model/todoItem";
+
+interface StyleProps {
+  priority: Priority;
+}
 
 const AddNewTodoContainer = styled.div`
   display: flex;
@@ -86,7 +92,7 @@ const PriorityButton = styled.button`
   }
 `;
 
-const Priority = styled.ul`
+const Priorities = styled.ul`
   display: none;
   flex-direction: column;
   justify-content: center;
@@ -97,33 +103,47 @@ const Priority = styled.ul`
   background: ${COLORS.white};
   cursor: pointer;
 
-  li {
-    padding: 7px 20px;
-    transition: background-color 200ms ease-in;
+  &.is-open {
+    display: flex;
+  }
+`;
 
-    :first-child {
-      border-radius: 20px 20px 0 0;
-    }
+const PriorityItem = styled.li<StyleProps>`
+  display: flex;
+  align-items: center;
+  padding: 7px 20px;
+  transition: background-color 200ms ease-in;
 
-    :last-child {
-      border-radius: 0 0 20px 20px;
-    }
-
-    :hover {
-      background-color: ${COLORS.hoverGrayBg};
-    }
+  ::before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-color: ${props => priorityColor(props.priority)};
+    border-radius: 50%;
+    position: relative;
+    top: 0.5px;
+    margin-right: 7px;
   }
 
-  li:not(:last-child) {
+  :first-child {
+    border-radius: 20px 20px 0 0;
+  }
+
+  :last-child {
+    border-radius: 0 0 20px 20px;
+  }
+
+  :not(:last-child) {
     border-bottom: 1px solid ${COLORS.divider};
   }
 
-  li:active {
-    background: ${COLORS.gray};
+  :hover {
+    background-color: ${COLORS.hoverGrayBg};
   }
 
-  &.is-open {
-    display: flex;
+  :active {
+    background: ${COLORS.gray};
   }
 `;
 
@@ -135,5 +155,6 @@ export {
   Input,
   ButtonContainer,
   PriorityButton,
-  Priority,
+  Priorities,
+  PriorityItem,
 };

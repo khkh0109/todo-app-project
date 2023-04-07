@@ -1,4 +1,4 @@
-import { Priority as StylePriority } from "./style";
+import { Priorities, PriorityItem } from "./style";
 import { type Priority } from "../../model/todoItem";
 
 interface PriorityModalProps {
@@ -13,17 +13,18 @@ function PriorityModal({
   setIsPriorityModalOpen,
 }: PriorityModalProps): JSX.Element {
   return (
-    <StylePriority className={isPriorityModalOpen ? "is-open" : ""}>
+    <Priorities className={isPriorityModalOpen ? "is-open" : ""}>
       {[1, 2, 3, 4].map(priority => (
-        <li
+        <PriorityItem
+          priority={priority as Priority}
           key={priority}
           onClick={() => {
             setPriority(priority as Priority);
             setIsPriorityModalOpen(false);
           }}
-        >{`우선순위 ${priority}`}</li>
+        >{`우선순위 ${priority}`}</PriorityItem>
       ))}
-    </StylePriority>
+    </Priorities>
   );
 }
 
