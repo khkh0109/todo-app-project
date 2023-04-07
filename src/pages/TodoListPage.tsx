@@ -14,10 +14,11 @@ function TodoListPage({ lists }: TodoListPageProps): JSX.Element {
   const { listId } = useParams();
   const list = lists.find(list => list.id === listId);
   const init = list === undefined ? [] : list.list;
-  const done = list?.list.filter(todo => todo.isDone);
-  const initCount = done === undefined ? 0 : done.length;
 
   const [todos, setTodos] = useState<TodoItem[]>(init);
+  const done = todos.filter(todo => todo.isDone);
+
+  const initCount = done === undefined ? 0 : done.length;
   const [count, setCount] = useState<number>(initCount);
 
   if (list === undefined) {
@@ -25,8 +26,8 @@ function TodoListPage({ lists }: TodoListPageProps): JSX.Element {
   }
 
   useEffect(() => {
-    setCount(todos.filter(todo => todo.isDone).length);
-  }, [todos]);
+    setCount(done === undefined ? 0 : done.length);
+  }, [done]);
 
   return (
     <>
