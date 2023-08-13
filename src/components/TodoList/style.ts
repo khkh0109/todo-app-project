@@ -45,6 +45,12 @@ const List = styled.li<StyleListProps>`
       background-position: center;
     }
 
+    input:checked + p,
+    input:checked + input[type="text"] {
+      color: ${COLORS.gray};
+      text-decoration: line-through;
+    }
+
     input[type="text"] {
       flex-grow: 1;
       height: 20px;
