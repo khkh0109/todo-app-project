@@ -6,6 +6,7 @@
 
 ## 링크
 * Demo: https://todo-app-project-dun.vercel.app
+* Figma: https://www.figma.com/file/WGl3Z14Nk2hB1Y3vbsCcOV/To-Do-List?type=design&node-id=1-3&mode=design&t=1kdxHiMltoyQ3P6h-0
 
 <br/>
 
@@ -37,8 +38,8 @@ $ npm start
 ### 투두
 |우선순위가 있는 투두 생성|투두 수정|
 |---|---|
-|![투두_생성](https://github.com/khkh0109/todo-app-project/assets/77181642/1783fdbf-a4bd-4e05-bb96-1ba6fd298c1d)|![투두_수정](https://github.com/khkh0109/todo-app-project/assets/77181642/38778bd9-e4a6-4229-af33-bd773961714b)|
+|![투두_생성](https://github.com/khkh0109/todo-app-project/assets/77181642/1783fdbf-a4bd-4e05-bb96-1ba6fd298c1d)|![투두_수정](https://github.com/khkh0109/todo-app-project/assets/77181642/4b325aae-ee92-4493-a822-caa656941c33)|
 
 |투두 삭제|완료된 투두 카운팅|
 |---|---|
-|![투두_삭제](https://github.com/khkh0109/todo-app-project/assets/77181642/798f96bf-6974-4cd8-b330-0ec09ce0f3e6)|![투두_카운팅](https://github.com/khkh0109/todo-app-project/assets/77181642/8d7ccca3-5d69-4c77-ba65-665e446d0cd9)|
+|![투두_삭제](https://github.com/khkh0109/todo-app-project/assets/77181642/b0283f34-36f5-498b-b384-996489b1caef)|![투두_카운팅](https://github.com/khkh0109/todo-app-project/assets/77181642/3eeb826d-27a4-4582-b2ae-10bf3807be24)|
